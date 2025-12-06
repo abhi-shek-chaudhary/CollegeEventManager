@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "195102788720",
+    "project_id": "newapp-85279",
+    "storage_bucket": "newapp-85279.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:195102788720:android:eb334bbbae5eb153a078b5",
+        "android_client_info": {
+          "package_name": "com.example.collegeeventmanager"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuorgLsjfWyyNZPt5zNOs_kxMnQGNLfzg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:195102788720:android:e5fa411754cbb743a078b5",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuorgLsjfWyyNZPt5zNOs_kxMnQGNLfzg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
