@@ -2,6 +2,7 @@ package com.example.collegeeventmanager
 
 import android.app.Application
 import com.cloudinary.android.MediaManager
+import com.example.collegeeventmanager.BuildConfig
 import java.util.HashMap
 
 /**
@@ -24,14 +25,12 @@ class MyApplication : Application() {
         // Map to hold configuration parameters
         val config: MutableMap<String, String> = HashMap()
 
-        // !!! IMPORTANT: Replace these placeholders with your actual Cloudinary credentials !!!
-        // You get these from your Cloudinary dashboard.
-        config["cloud_name"] = "dbgjafkst"
-        config["api_key"] = "355645536256193"
+        // 2. Fetch the secrets from the generated BuildConfig class!
+        config["cloud_name"] = BuildConfig.CLOUDINARY_CLOUD_NAME
+        config["api_key"] = BuildConfig.CLOUDINARY_API_KEY
 
-        // WARNING: Storing your API Secret directly in client code (Android/iOS) is INSECURE.
-        // This is only safe for testing. For production, use Unsigned Uploads or a secure backend.
-        config["api_secret"] = "kU_BLvYhE4ebs1bHwmkrDZm0VLA"
+        // WARNING: See note below regarding API Secret safety.
+        config["api_secret"] = BuildConfig.CLOUDINARY_API_SECRET
 
         try {
             // Initialize the MediaManager with the global context and configuration

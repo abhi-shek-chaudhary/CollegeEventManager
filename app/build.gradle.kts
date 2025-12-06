@@ -1,3 +1,5 @@
+import java.io.FileInputStream
+import java.util.Properties
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -5,6 +7,11 @@ plugins {
     alias(libs.plugins.google.gms.google.services)
 }
 
+val properties = Properties()
+// Load the properties file from the root directory
+rootProject.file("local.properties").takeIf { it.exists() }?.let {
+    properties.load(FileInputStream(it))
+}
 android {
     namespace = "com.example.collegeeventmanager"
     compileSdk {
@@ -12,6 +19,21 @@ android {
     }
 
     defaultConfig {
+        buildConfigField(
+            type = "String",
+            name = "CLOUDINARY_CLOUD_NAME",
+            value = properties.getProperty("CLOUDINARY_CLOUD_NAME") ?: "\"MISSING_CLOUD_NAME\""
+        )
+        buildConfigField(
+            type = "String",
+            name = "CLOUDINARY_API_KEY",
+            value = properties.getProperty("CLOUDINARY_API_KEY") ?: "\"MISSING_KEY\""
+        )
+        buildConfigField(
+            type = "String",
+            name = "CLOUDINARY_API_SECRET",
+            value = properties.getProperty("CLOUDINARY_API_SECRET") ?: "\"MISSING_SECRET\""
+        )
         applicationId = "com.example.collegeeventmanager"
         minSdk = 24
         targetSdk = 36
@@ -20,6 +42,7 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
+
 
     buildTypes {
         release {
@@ -32,6 +55,7 @@ android {
     }
     buildFeatures{
         viewBinding=true
+        buildConfig=true
 
     }
     compileOptions {
@@ -41,9 +65,7 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
-    buildFeatures {
-        viewBinding = true
-    }
+
 }
 
 dependencies {
