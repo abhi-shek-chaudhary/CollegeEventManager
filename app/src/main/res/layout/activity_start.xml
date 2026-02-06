@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Start">
+    tools:context=".Start"
+    android:background="@drawable/backgroundd">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -14,12 +15,15 @@
         android:layout_gravity="center"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:textColor="@color/white"
         android:layout_margin="40dp"/>
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Post"
+        android:background="@drawable/buttton"
+        android:visibility="invisible"
         android:id="@+id/post"
         />
     <androidx.appcompat.widget.AppCompatButton
@@ -28,6 +32,7 @@
         android:layout_margin="10dp"
         android:layout_gravity="center"
         android:text="view"
+        android:background="@drawable/buttton"
         android:id="@+id/view"
         />
     <androidx.appcompat.widget.AppCompatButton
@@ -35,6 +40,8 @@
         android:layout_height="wrap_content"
         android:text="Create new Admin"
         android:layout_gravity="center"
+        android:background="@drawable/buttton"
+        android:visibility="invisible"
         android:id="@+id/createNewAdmin"
         />
 

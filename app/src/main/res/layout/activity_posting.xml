@@ -6,44 +6,57 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".posting">
+    tools:context=".posting"
+    android:background="@drawable/backgroundd">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="30dp"
+        android:layout_margin="50dp"
         android:layout_gravity="center"
         android:textStyle="bold"
         android:textSize="20sp"
+        android:textColor="@color/white"
         android:text="Post" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="200dp"
+        android:background="@color/white">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:hint="Caption"
+            android:textColorHint="@color/black"
+            android:textSize="20sp"
+
+
             android:id="@+id/caption"/>
     </com.google.android.material.textfield.TextInputLayout>
 
       <LinearLayout
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:gravity="center">
-            <Button
+          android:gravity="center"
+          android:layout_marginTop="10dp">
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-
+                android:layout_marginRight="5dp"
+                android:background="@drawable/buttton"
                 android:text="Post" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/upload"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+
+                android:background="@drawable/buttton"
                 android:text="choose  Image" />
 </LinearLayout>
 

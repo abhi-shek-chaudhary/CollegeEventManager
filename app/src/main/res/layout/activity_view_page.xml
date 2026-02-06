@@ -5,10 +5,12 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View_page">
+    tools:context=".View_page"
+    android:background="@drawable/backgroundd">
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+
         android:id="@+id/listView"/>
 
 </LinearLayout>

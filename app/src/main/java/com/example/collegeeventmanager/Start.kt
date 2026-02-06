@@ -16,6 +16,7 @@ import com.google.firebase.firestore.toObject
 class Start : AppCompatActivity() {
     companion object{
         val KEY="key"
+        val act="ac"
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,41 +28,44 @@ class Start : AppCompatActivity() {
         val id=intent.getStringExtra(MainActivity.key)
        if(id!=null) {
            //post button interactivity
-           post.setOnClickListener {
+
+
                val db = Firebase.firestore
                val ref = db.collection("Users").document(id)
                ref.get().addOnSuccessListener {
                    val current = it.toObject<UserData>()
                    if (current != null) {
-                       if (current.role == "Admin") {
-                           val intent = Intent(this, posting::class.java)
+                       if (current.role == "Admin" || current.role=="superAdmin") {
+                           post.visibility=Button.VISIBLE
+                           post.setOnClickListener {
+                           val intent = Intent(this, Category::class.java)
                            intent.putExtra(KEY,id)
+                           intent.putExtra(act,"post")
                            startActivity(intent)
-                       } else {
-                           Toast.makeText(this, "Only Admin can post", Toast.LENGTH_SHORT).show()
+                               }
                        }
                    }
                }
-           }
+
            //create button interactivity
-           create.setOnClickListener {
-               val db = Firebase.firestore
-               val ref = db.collection("Users").document(id)
                ref.get().addOnSuccessListener {
                    val current = it.toObject<UserData>()
                    if (current != null) {
-                       if (current.role == "Admin") {
-                           val intent = Intent(this, createNew::class.java)
-                           startActivity(intent)
-                       } else {
-                           Toast.makeText(this, "Only Admin can post", Toast.LENGTH_SHORT).show()
+                       if (current.role == "superAdmin") {
+                           create.visibility=Button.VISIBLE
+                           create.setOnClickListener {
+                               val intent = Intent(this, createNew::class.java)
+                               startActivity(intent)
+                           }
                        }
                    }
                }
-           }
+
            //view button interactivity
            view.setOnClickListener {
-               val intent = Intent(this, View_page::class.java)
+               val intent = Intent(this, Category::class.java)
+               intent.putExtra(KEY,id)
+               intent.putExtra(act,"view")
                startActivity(intent)
 
            }

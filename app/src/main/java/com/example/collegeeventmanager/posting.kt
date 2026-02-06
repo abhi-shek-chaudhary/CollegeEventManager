@@ -35,7 +35,8 @@ private var selectedImageUri: Uri?=null
         enableEdgeToEdge()
         setContentView(R.layout.activity_posting)
         val choose=findViewById<Button>(R.id.upload)
-        val id=intent.getStringExtra(Start.KEY)
+        val id=intent.getStringExtra("id")
+        val category=intent.getStringExtra("cat")
 
         choose.setOnClickListener {
             val intent= Intent(Intent.ACTION_GET_CONTENT)
@@ -47,11 +48,11 @@ private var selectedImageUri: Uri?=null
         save.setOnClickListener {
             val etcaption=findViewById<TextInputEditText>(R.id.caption)
             caption=etcaption.text.toString().trim()
-               uploadImageToCloudinary(selectedImageUri!!,id!!)
+               uploadImageToCloudinary(selectedImageUri!!,id!!,category!!)
         }
 
     }
-    private fun uploadImageToCloudinary(imageUri: Uri, userId: String) {
+    private fun uploadImageToCloudinary(imageUri: Uri, userId: String,category: String) {
 
         Toast.makeText(this, "Starting image upload...", Toast.LENGTH_LONG).show()
         // Disable during upload
@@ -98,7 +99,9 @@ private var selectedImageUri: Uri?=null
                         "userId" to userId,
                         "publicId" to rawPublicId, // <-- Store the FULL ID for Cloudinary API reference later
                         "fileId" to fileId,        // <-- Store the simple ID for simpler referencing
-                        "caption" to caption
+                        "caption" to caption,
+                        "createdAt" to FieldValue.serverTimestamp(),
+                        "category" to category
                     )
 
                     // 3. Save to Firestore using the CLEANED fileId

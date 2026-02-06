@@ -16,6 +16,9 @@
         android:theme="@style/Theme.CollegeEventManager"
         tools:replace="android:fullBackupContent">
         <activity
+            android:name=".Category"
+            android:exported="false" />
+        <activity
             android:name=".createNew"
             android:exported="false" />
         <activity
